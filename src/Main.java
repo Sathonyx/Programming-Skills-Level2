@@ -13,11 +13,94 @@ Users can choose from the following tickets:
 -The lottery system generates 1 random ticket code.
 */
 public class Main {
-
-    Ticket tickets;
+    private static Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+    private static Ticket tickets = new Ticket(); // Creación de un objeto Ticket
+    private static HashMap<Integer, String> ticketLottery = tickets.getTicketOptions();
+    private static int keySelected;
 
     public static void main(String[] args) {
+        int menuOption;
+        int subMenuOption;
 
+        while(true){
+            menuOption = mainMenu();
+
+            switch (menuOption){
+                case 0 ->{
+                    selectTickets(ticketLottery);
+                    subMenuOption = subMenu();
+                    while (true){
+                        switch (subMenuOption){
+                            case 0 ->{
+
+                            }
+
+                        }
+                    }
+
+                }
+                case 1->{
+                    System.out.println("Have a nice day!");
+                    System.exit(0);
+                }
+                default -> {
+                    System.out.println("That's not an option, try again");
+
+                }
+            }
+        }
+
+
+
+
+        /*System.out.println("Here you have the list of the tickets you can buy, press from 1 to 20 to buy it");
+
+        // Imprimimos el Hashmap
+        for(Map.Entry<Integer, String> entry : ticketLottery.entrySet()) {
+            System.out.println("Ticket" + entry.getKey() + ": " + entry.getValue());
 
         }
+        int keyTicket = scanner.nextInt();
+        System.out.println("The ticket you bought is" + ticketLottery.get(keyTicket) + "Do you want to buy another one?");
+        System.out.println("0: No");
+        System.out.println("1 Yes");
+        int subMenuChoice = scanner.nextInt();
+
+
+        ticketLottery.remove(keyTicket);*/
     }
+    private static int mainMenu(){
+        System.out.println("Welcome to the Man U lottery system, you are allowed to buy maximum 2 tickets.");
+        System.out.println("What do you want to do?");
+        System.out.println("0 Buy a ticket");
+        System.out.println("1 Leave");
+
+        return scanner.nextInt();
+    }
+    private static int subMenu(){
+        System.out.println("Now that you bought a ticket, do you want to play lottery or buy another one?");
+        System.out.println("0 Buy another ticket");
+        System.out.println("1 Play Lottery");
+        return scanner.nextInt();
+    }
+    public static void selectTickets(HashMap<Integer, String> ticketLottery) {
+        System.out.println("Here you have the list of the tickets you can buy, press from 1 to 20 to buy it");
+        for (Map.Entry<Integer, String> entry : ticketLottery.entrySet()) {
+            System.out.println("Ticket " + entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("Type from 1 to 20 to select the ticket you want to buy");
+        keySelected =scanner.nextInt();
+        System.out.println("The ticket you bought is: "+ ticketLottery.get(keySelected));
+    }
+    public static void selectTickets2(HashMap<Integer, String> ticketLottery) {
+        ticketLottery.remove(keySelected);
+        System.out.println("Here you have the list of the tickets you can buy, press from 1 to 19 to buy it");
+        for (Map.Entry<Integer, String> entry : ticketLottery.entrySet()) {
+            System.out.println("Ticket " + entry.getKey() + ": " + entry.getValue());
+        }
+        System.out.println("Type from 1 to 20 to select the ticket you want to buy");
+        int KeySelected =scanner.nextInt();
+        System.out.println("The ticket you bought is: "+ ticketLottery.get(KeySelected));
+    }
+
+}
