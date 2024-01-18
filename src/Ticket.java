@@ -10,7 +10,7 @@ public class Ticket {
         for(String ticket: ticketPool){
             keyValue++;
             ticketOptions.put(keyValue,ticket);
-            //Creamos el hashmap con la iteracion
+            //Creamos el hashmap con la iteracion.
 
         }
 
